@@ -1,0 +1,18 @@
+Model Selection:
+
+Choosing the most suitable machine learning algorithm for the task was critical. Traditional algorithms like Logistic Regression and SVM were effective but couldn't match the performance of deep learning models like CNNs.
+Overfitting:
+
+Preventing overfitting was a challenge, especially when using deep learning models. Regularization techniques such as dropout and data augmentation were employed to combat this.
+Hyperparameter Tuning:
+
+Optimizing the model's hyperparameters (e.g., learning rate, batch size, number of layers) to improve accuracy and training speed required significant experimentation and tuning.
+Training Time:
+
+Training deeper models like CNNs on a large dataset like MNIST required substantial computational resources and time. Using GPUs accelerated the training but still posed a challenge with resource constraints.
+Data Imbalance:
+
+Although the MNIST dataset is relatively balanced, ensuring consistent performance across all digit classes required extra attention, particularly when some digits (e.g., '1' and '7') had visually similar features.
+Generalization:
+
+Ensuring that the model generalizes well to unseen data beyond the MNIST dataset, such as other types of handwritten digits or numbers, remains an ongoing challenge.
