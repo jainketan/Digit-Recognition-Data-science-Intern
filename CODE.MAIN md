@@ -1,0 +1,109 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+tf.random.set_seed(3)
+from tensorflow import keras
+import keras
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense, Conv2D, MaxPool2D, Flatten, Dropout
+from tensorflow.math import confusion_matrix
+
+#Get the data
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+type(X_train)
+
+print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
+
+def plot_img(i):
+  plt.imshow(X_train[i])
+  plt.title(y_train[i])
+  plt.show()
+
+  for i in range(10):
+  plot_img(i)
+
+# Print the unique values
+print(np.unique(y_train))
+print(np.unique(y_test))
+
+
+#Preprocessing
+#Normalizing to range [0,1]
+X_train = X_train.astype(np.float32)/255
+X_test = X_test.astype(np.float32)/255
+
+#Reshaping
+X_train = np.expand_dims(X_train,-1)
+X_test = np.expand_dims(X_test,-1)
+
+
+y_train = keras.utils.to_categorical(y_train)
+y_test = keras.utils.to_categorical(y_test)
+
+
+model=Sequential()
+
+model.add(Conv2D(32, (3,3), input_shape=(28,28,1), activation= 'relu'))
+model.add(MaxPool2D((2,2)))
+
+model.add(Conv2D(64, (3,3), activation= 'relu'))
+model.add(MaxPool2D((2,2)))
+
+model.add(Flatten())
+
+model.add(Dropout(0.25))
+
+model.add(Dense(10, activation='softmax'))
+
+
+
+model.summary()
+
+
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+
+#Model training
+history = model.fit(X_train, y_train, epochs=30, validation_split= 0.3)
+
+
+
+Epoch 1/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 39s 30ms/step - accuracy: 0.8305 - loss: 0.5485 - val_accuracy: 0.9096 - val_loss: 0.3125
+Epoch 2/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 41s 30ms/step - accuracy: 0.8930 - loss: 0.3555 - val_accuracy: 0.9359 - val_loss: 0.2296
+Epoch 3/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 39s 30ms/step - accuracy: 0.9170 - loss: 0.2678 - val_accuracy: 0.9477 - val_loss: 0.1827
+Epoch 4/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 40s 29ms/step - accuracy: 0.9332 - loss: 0.2182 - val_accuracy: 0.9572 - val_loss: 0.1503
+Epoch 5/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 39s 29ms/step - accuracy: 0.9453 - loss: 0.1818 - val_accuracy: 0.9609 - val_loss: 0.1330
+Epoch 6/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 41s 29ms/step - accuracy: 0.9499 - loss: 0.1627 - val_accuracy: 0.9651 - val_loss: 0.1190
+Epoch 7/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 41s 30ms/step - accuracy: 0.9568 - loss: 0.1412 - val_accuracy: 0.9679 - val_loss: 0.1090
+Epoch 8/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 38s 29ms/step - accuracy: 0.9608 - loss: 0.1292 - val_accuracy: 0.9696 - val_loss: 0.1017
+Epoch 9/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 42s 30ms/step - accuracy: 0.9641 - loss: 0.1205 - val_accuracy: 0.9726 - val_loss: 0.0945
+Epoch 10/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 39s 29ms/step - accuracy: 0.9672 - loss: 0.1083 - val_accuracy: 0.9744 - val_loss: 0.0903
+Epoch 11/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 41s 29ms/step - accuracy: 0.9681 - loss: 0.1027 - val_accuracy: 0.9741 - val_loss: 0.0872
+Epoch 12/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 41s 30ms/step - accuracy: 0.9697 - loss: 0.0981 - val_accuracy: 0.9759 - val_loss: 0.0817
+Epoch 13/30
+...
+Epoch 29/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 38s 29ms/step - accuracy: 0.9797 - loss: 0.0648 - val_accuracy: 0.9807 - val_loss: 0.0675
+Epoch 30/30
+1313/1313 ━━━━━━━━━━━━━━━━━━━━ 41s 29ms/step - accuracy: 0.9798 - loss: 0.0654 - val_accuracy: 0.9814 - val_loss: 0.0653
+
+
+
+TOTAL EPOCH = 30 
+VAL_ACCURACY = 0.9814 // 98%
+VAL_LOSS =  0.0653 
+  

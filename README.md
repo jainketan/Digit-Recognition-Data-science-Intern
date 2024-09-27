@@ -1,1 +1,0 @@
-# Digit-Recognition-Data-science-Intern
