@@ -1,0 +1,16 @@
+Dataset: MNIST dataset of 70,000 grayscale images of handwritten digits.
+Model: Implemented using a range of models, including Logistic Regression, Support Vector Machines (SVM), and Convolutional Neural Networks (CNNs).
+Implements models like Logistic Regression, SVM, and CNN.
+Achieves high accuracy (~99%) on test data with CNN.
+Includes training visualization (accuracy/loss curves) and confusion matrix for evaluation
+
+
+
+Libraries Used:
+TensorFlow / Keras for deep learning
+Scikit-learn for traditional machine learning models
+Matplotlib for visualization
+Pandas and NumPy for data manipulation
+Training & Evaluation: The model is trained on 60,000 images and tested on 10,000 images.
+Accuracy: The CNN model achieves a high level of accuracy (~99%) on test data.
+Visualization: Plots of accuracy and loss during training, and confusion matrix to show performance.
