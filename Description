@@ -1,0 +1,2 @@
+This project focuses on building a machine learning model to accurately recognize handwritten digits (0-9) using the MNIST dataset. 
+Various machine learning and deep learning techniques, such as Logistic Regression, SVM, and Convolutional Neural Networks (CNNs), are explored to achieve high classification accuracy.
