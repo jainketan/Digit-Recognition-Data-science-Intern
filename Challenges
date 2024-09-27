@@ -1,9 +1,11 @@
 Model Selection:
 
-Choosing the most suitable machine learning algorithm for the task was critical. Traditional algorithms like Logistic Regression and SVM were effective but couldn't match the performance of deep learning models like CNNs.
+Choosing the most suitable machine learning algorithm for the task was critical. 
+Traditional algorithms like Logistic Regression and SVM were effective but couldn't match the performance of deep learning models like CNNs.
 Overfitting:
 
-Preventing overfitting was a challenge, especially when using deep learning models. Regularization techniques such as dropout and data augmentation were employed to combat this.
+Preventing overfitting was a challenge, especially when using deep learning models. 
+Regularization techniques such as dropout and data augmentation were employed to combat this.
 Hyperparameter Tuning:
 
 Optimizing the model's hyperparameters (e.g., learning rate, batch size, number of layers) to improve accuracy and training speed required significant experimentation and tuning.
